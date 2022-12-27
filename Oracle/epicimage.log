@@ -1,0 +1,54 @@
+
+SQL*Loader: Release 9.2.0.1.0 - Production on Tue Feb 20 13:52:26 2007
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+Control File:   epicimage.DAT
+Data File:      epicimage.DAT
+  Bad File:     epicimage.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table MACOMB.MT_EPICIMAGE, loaded from every logical record.
+Insert option in effect for this table: APPEND
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+IMAGEREF                            FIRST     *   ,  O(") CHARACTER            
+VOLUMEID                             NEXT     *   ,  O(") CHARACTER            
+ARCHIVEFLAG                          NEXT     *   ,  O(") CHARACTER            
+IMAGEFILENAME                        NEXT     *   ,  O(") CHARACTER            
+
+ORA-01653: unable to extend table MACOMB.MT_EPICIMAGE by 8 in tablespace MACOMB
+
+SQL*Loader-605: Non-data dependent ORACLE error occurred -- load discontinued.
+
+Specify SKIP=640 when continuing the load.
+
+Table MACOMB.MT_EPICIMAGE:
+  640 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                  66048 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records rejected:         0
+Total logical records discarded:        0
+
+Run began on Tue Feb 20 13:52:26 2007
+Run ended on Tue Feb 20 13:52:27 2007
+
+Elapsed time was:     00:00:00.30
+CPU time was:         00:00:00.03

@@ -1,0 +1,6 @@
+alter table  OFFTRK_IMPORT_CHARGE_LOG
+modify (
+ TRANSACTION_DATE null,
+ TRANSACTION_CODE null,
+ BOOKING_DATE null
+)

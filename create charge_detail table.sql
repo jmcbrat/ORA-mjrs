@@ -1,0 +1,22 @@
+create table charge_detail (			
+OFFENDER_ID			VARCHAR2(64)	NOT NULL,
+CHARGE_DETAIL_ID    VARCHAR2(38)    NOT null,
+CHARGE_ID			NUMBER(38)	NOT NULL,
+TRANSACTION_CODE	VARCHAR2(4)	NOT NULL,
+BOOKING_DATE		DATE,	
+END_DATE			DATE,	
+OFFTRK_DAYS_IN		NUMBER(38),	
+CHARGE_AMT			NUMBER(11,2),	
+BATCH_ID			NUMBER(38)	NOT NULL,
+PROJ_RELEASE_DATE	DATE,	
+STATUS_START_DATE	DATE,	
+STATUS_END_DATE		DATE,	
+BOOKING_ID			VARCHAR2(16),	
+MODIFIED_BY			NUMBER(38),	
+MODIFIED_DATE		DATE	NOT NULL,
+IS_WORK_RELEASE		VARCHAR2(3)	NOT NULL,
+CUSTODY_STATUS_ID	VARCHAR2(16));
+
+-- Primary key is offender_id, charge_detail_id
+-- two additional indexes needed on booking_id, and custody_status_id.
+-- I don't care about the table space that is used. 	

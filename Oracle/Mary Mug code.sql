@@ -1,0 +1,106 @@
+REM Note that this DDL is not guaranteed to include
+REM   all properties of the original object.  It will also
+REM   not include CLUSTER or PARTITION information.  Please
+REM   report any other problems to support@benthicsoftware.com
+CREATE TABLE MT_EH_ENTITY_PHOTO (
+	ENTITY_ID    CHAR(16) NOT NULL,
+	PHOTO_ID     CHAR(16) NOT NULL,
+	DATE_TAKEN   CHAR(20) NOT NULL,
+	ACTION_TYPE  CHAR(1) NOT NULL,
+	ACTION_TIME  CHAR(20) NOT NULL,
+	ACTION_BY    NUMBER(9) NOT NULL);
+
+ALTER TABLE MT_EH_ENTITY_PHOTO ADD (
+	CONSTRAINT MT_PK_ENTITY_PHOTO PRIMARY KEY (PHOTO_ID));
+
+CREATE INDEX MT_DATE_TAKEN_1012 ON mt_EH_ENTITY_PHOTO (DATE_TAKEN);
+
+CREATE UNIQUE INDEX MT_EH_ENT_PHO_ACT_TIME ON mt_EH_ENTITY_PHOTO (ACTION_TIME, PHOTO_ID);
+
+CREATE INDEX MT_ENTITY_ID_0184 ON mt_EH_ENTITY_PHOTO (ENTITY_ID);
+
+--
+REM Note that this DDL is not guaranteed to include
+REM   all properties of the original object.  It will also
+REM   not include CLUSTER or PARTITION information.  Please
+REM   report any other problems to support@benthicsoftware.com
+CREATE TABLE MT_EH_ENTITY_DEFAULT_PHOTO (
+	ENTITY_ID    CHAR(16) NOT NULL,
+	PHOTO_ID     CHAR(16) NOT NULL,
+	ACTION_TYPE  CHAR(1) NOT NULL,
+	ACTION_TIME  CHAR(20) NOT NULL,
+	ACTION_BY    NUMBER(9) NOT NULL);
+
+ALTER TABLE MT_EH_ENTITY_DEFAULT_PHOTO ADD (
+	CONSTRAINT MT_PK_EH_ENTITY_DEFAULT_PHOTO PRIMARY KEY (ENTITY_ID));
+
+CREATE UNIQUE INDEX MT_UQ_PHOTO_ID_82504 ON mt_EH_ENTITY_DEFAULT_PHOTO (PHOTO_ID);
+
+
+
+
+--
+REM Note that this DDL is not guaranteed to include
+REM   all properties of the original object.  It will also
+REM   not include CLUSTER or PARTITION information.  Please
+REM   report any other problems to support@benthicsoftware.com
+CREATE TABLE MT_EH_MARKS_PHOTOS (
+	MARK_ID      CHAR(16) NOT NULL,
+	PHOTO_ID     CHAR(16) NOT NULL,
+	ACTION_BY    NUMBER(9) NOT NULL,
+	ACTION_TIME  CHAR(20) NOT NULL,
+	ACTION_TYPE  CHAR(1) NOT NULL);
+
+ALTER TABLE MT_EH_MARKS_PHOTOS ADD (
+	CONSTRAINT MT_PK_EH_MARKS_PHOTOS PRIMARY KEY (MARK_ID, PHOTO_ID));
+
+CREATE INDEX MT_EH_MARK_PHO_ACT_TIME ON mt_EH_MARKS_PHOTOS (ACTION_TIME, PHOTO_ID);
+
+CREATE INDEX MT_MARK_ID_0386 ON mt_EH_MARKS_PHOTOS (MARK_ID);
+
+CREATE INDEX MT_PHOTO_ID_0387 ON mt_EH_MARKS_PHOTOS (PHOTO_ID);
+
+
+--
+REM Note that this DDL is not guaranteed to include
+REM   all properties of the original object.  It will also
+REM   not include CLUSTER or PARTITION information.  Please
+REM   report any other problems to support@benthicsoftware.com
+CREATE TABLE MT_EH_NIST_MUGSHOT (
+	PHOTO_ID           CHAR(16) NOT NULL,
+	IMAGE_POSE         VARCHAR2(64),
+	POSE_OFFSET_ANGLE  VARCHAR2(64),
+	GLASSES_FLAG       CHAR(1),
+	HAT_FLAG           CHAR(1),
+	SCARF_FLAG         CHAR(1),
+	PHYSICAL_FLAG      CHAR(1),
+	OTHER_FLAG         CHAR(1),
+	DESCRIPTION        VARCHAR2(51),
+	ACTION_TYPE        CHAR(1) NOT NULL,
+	ACTION_TIME        CHAR(20) NOT NULL,
+	ACTION_BY          NUMBER(9) NOT NULL);
+
+ALTER TABLE MT_EH_NIST_MUGSHOT ADD (
+	CONSTRAINT MT_PK_EH_NIST_MUGSHOT PRIMARY KEY (PHOTO_ID));
+
+CREATE INDEX MT_I_IMAGE_POSE_082201 ON mt_EH_NIST_MUGSHOT (IMAGE_POSE, PHOTO_ID);
+
+
+--
+REM Note that this DDL is not guaranteed to include
+REM   all properties of the original object.  It will also
+REM   not include CLUSTER or PARTITION information.  Please
+REM   report any other problems to support@benthicsoftware.com
+CREATE TABLE MT_EPICIMAGE (
+	IMAGEREF       CHAR(16) NOT NULL,
+	VOLUMEID       VARCHAR2(16) NOT NULL,
+	ARCHIVEFLAG    CHAR(1) NOT NULL,
+	IMAGEFILENAME  VARCHAR2(32) NOT NULL);
+
+ALTER TABLE MT_EPICIMAGE ADD (
+	CONSTRAINT MT_PK_EPICIMAGE PRIMARY KEY (IMAGEREF, VOLUMEID));
+
+CREATE INDEX MT_IMAGEREF_0842 ON mt_EPICIMAGE (IMAGEREF);
+
+CREATE INDEX MT_VOLUMEID_0843 ON mt_EPICIMAGE (VOLUMEID);
+

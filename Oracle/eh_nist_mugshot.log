@@ -1,0 +1,62 @@
+
+SQL*Loader: Release 9.2.0.1.0 - Production on Tue Feb 20 13:52:26 2007
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+Control File:   eh_nist_mugshot.DAT
+Data File:      eh_nist_mugshot.DAT
+  Bad File:     eh_nist_mugshot.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table MACOMB.MT_EH_NIST_MUGSHOT, loaded from every logical record.
+Insert option in effect for this table: APPEND
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+PHOTO_ID                            FIRST     *   ,  O(") CHARACTER            
+IMAGE_POSE                           NEXT     *   ,  O(") CHARACTER            
+POSE_OFFSET_ANGLE                    NEXT     *   ,  O(") CHARACTER            
+GLASSES_FLAG                         NEXT     *   ,  O(") CHARACTER            
+HAT_FLAG                             NEXT     *   ,  O(") CHARACTER            
+SCARF_FLAG                           NEXT     *   ,  O(") CHARACTER            
+PHYSICAL_FLAG                        NEXT     *   ,  O(") CHARACTER            
+OTHER_FLAG                           NEXT     *   ,  O(") CHARACTER            
+DESCRIPTION                          NEXT     *   ,  O(") CHARACTER            
+ACTION_TYPE                          NEXT     *   ,  O(") CHARACTER            
+ACTION_TIME                          NEXT     *   ,  O(") CHARACTER            
+ACTION_BY                            NEXT     *   ,  O(") CHARACTER            
+
+ORA-01653: unable to extend table MACOMB.MT_EH_NIST_MUGSHOT by 8 in tablespace MACOMB
+
+SQL*Loader-605: Non-data dependent ORACLE error occurred -- load discontinued.
+
+Specify SKIP=512 when continuing the load.
+
+Table MACOMB.MT_EH_NIST_MUGSHOT:
+  512 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 198144 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records rejected:         0
+Total logical records discarded:        0
+
+Run began on Tue Feb 20 13:52:26 2007
+Run ended on Tue Feb 20 13:52:26 2007
+
+Elapsed time was:     00:00:00.30
+CPU time was:         00:00:00.04

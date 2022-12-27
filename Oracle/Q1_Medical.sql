@@ -1,0 +1,24 @@
+SELECT  ELC.LOCATION_ID                                    ,
+        ELC.LOCATION_LEVEL                                 ,
+        EF_LOCATION_DESC(ELC.LOCATION_ID, 'IC') AS LONGNAME,
+        EF_LOCATION_NAME(ELC.LOCATION_ID, 'IC') AS SHORTNAME
+FROM    EPIC_LOCATION_CHILD ELC START
+WITH ELC.CHILD_LOCATION_ID =
+        (
+                SELECT  EHL.LOCATION_ID
+                FROM    EH_HOUSING_ASSIGNMENTS EHL
+                WHERE   EHL.ENTITY_ID               = :B1
+                        AND EHL.MUSTER_DISPLAY_FLAG = 'Y'
+        )
+        CONNECT BY ELC.LOCATION_ID = PRIOR ELC.CHILD_LOCATION_ID
+UNION ALL
+SELECT  EHL.LOCATION_ID                                    ,
+        EL.LOCATION_LEVEL                                  ,
+        EF_LOCATION_DESC(EHL.LOCATION_ID, 'IC') AS LONGNAME,
+        EF_LOCATION_NAME(EHL.LOCATION_ID, 'IC') AS SHORTNAME
+FROM    EH_HOUSING_ASSIGNMENTS EHL,
+        EPIC_LOCATIONS EL
+WHERE   EHL.ENTITY_ID               = :B1
+        AND EHL.MUSTER_DISPLAY_FLAG = 'Y'
+        AND EL.LOCATION_ID          = EHL.LOCATION_ID
+ORDER BY LOCATION_LEVEL
